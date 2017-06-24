@@ -159,8 +159,8 @@ class ExifTool(object):
         """Start an ``exiftool`` process in batch mode for this instance.
 
         This method will issue a ``UserWarning`` if the subprocess is
-        already running.  The process is started with the ``-G`` and
-        ``-n`` as common arguments, which are automatically included
+        already running.  The process is started with the ``-G``
+        as common arguments, which are automatically included
         in every command you run with :py:meth:`execute()`.
         """
         if self.running:
@@ -169,7 +169,7 @@ class ExifTool(object):
         with open(os.devnull, "w") as devnull:
             self._process = subprocess.Popen(
                 [self.executable, "-stay_open", "True",  "-@", "-",
-                 "-common_args", "-G", "-n"],
+                 "-common_args", "-G"],
                 stdin=subprocess.PIPE, stdout=subprocess.PIPE,
                 stderr=devnull)
         self.running = True
